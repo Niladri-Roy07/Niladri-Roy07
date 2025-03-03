@@ -1,0 +1,54 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+%\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage[none]{hyphenat}
+\usepackage{listings}
+\usepackage[english]{babel}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amsmath, amssymb}   % for text in math mode
+\lstset{
+  frame=single,
+  breaklines=true
+}
+% New macro definitions
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\norm}[1]{\ensuremath{\left\lVert #1 \right\rVert}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\let\vec\mathbf
+\begin{document}
+\begin{center}
+\textbf{\Large{CHAPTER-1 \\ RELATIONS \& FUNCTIONS}}
+\end{center}
+\section*{\centering EXERCISE - 1.3}
+\begin{enumerate}
+\item Let $ f : \{1, 3, 4\} \to \{1, 2, 5\} $ and $ g : \{1, 2, 5\} \to \{1, 3\} $ be given by:
+\[f = \{(1, 2), (3, 5), (4, 1)\}, \quad g = \{(1, 3), (2, 3), (5, 1)\}\]
+Find $ g \circ f $.
+\item Let $ f $, $ g $, and $ h $ be functions from $ \mathbb{R} $ to $ \mathbb{R} $. Show that:
+\[(f + g) \circ h = f \circ h + g \circ h\]
+\[(f \cdot g) \circ h = (f \circ h) \cdot (g \circ h)\]
+\item Find $ g \circ f $ and $ f \circ g $, if:
+\begin{enumerate}
+\item $ f(x) = |x| $ and $ g(x) = |5x - 2| $.
+\item $ f(x) = 8x^3 $ and $ g(x) = 1 $.
+\end{enumerate}
+\item State with reason whether the following functions have an inverse:
+\begin{enumerate}
+\item $ f : \{1, 2, 3, 4\} \to \{10\} $ with  
+\[f = \{(1, 10), (2, 10), (3, 10), (4, 10)\}
+\]
+\item $ g : \{5, 6, 7, 8\} \to \{1, 2, 3, 4\} $ with  
+\[g = \{(5, 4), (6, 3), (7, 4), (8, 2)\}
+\]
+\item $ h : \{2, 3, 4, 5\} \to \{7, 9, 11, 13\} $ with  
+\[h = \{(2, 7), (3, 9), (4, 11), (5, 13)\}
+\]
+\end{enumerate}
+\end{enumerate}
+\end{document}
+
