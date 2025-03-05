@@ -1,0 +1,45 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+%\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage[none]{hyphenat}
+\usepackage{listings}
+\usepackage[english]{babel}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amsmath, amssymb}   % for text in math mode
+\lstset{
+  frame=single,
+  breaklines=true
+}
+% New macro definitions
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\norm}[1]{\ensuremath{\left\lVert #1 \right\rVert}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\let\vec\mathbf
+\begin{document}
+\begin{center}
+    \textbf{\Large{CHAPTER-2 \\INVERSE TRIGONOMETRIC FUNCTIONS}}
+\end{center}
+\section*{\centering EXERCISE - 2.2}
+\begin{enumerate}
+\item Solve for $x$:
+\[3*sin^{-1} x = sin^{-1} (3x - 4x^3), \quad x \in \left[ -\frac{1}{2}, \frac{1}{2} \right]\]
+\item Solve for :
+\[3*cos^{-1} x = cos^{-1} (4x^3 - 3x), \quad x \in \left[ \frac{1}{2}, 1 \right]\]
+\item Prove that:
+\[tan^{-1} \frac{1}{1}+tan^{-1} \frac{2}{7} = tan^{-1} \frac{11}{24}\]
+\item Show that:
+\[2*tan^{-1} \frac{1}{2} + tan^{-1} \frac{1}{7} + tan^{-1} \frac{1}{17} = \frac{\pi}{4}\]
+\item Write the following functions in the simplest form:
+\begin{enumerate}
+\item $tan^{-1} \left( \frac{2x}{1 - x^2} \right), \quad x \neq 0$
+\item $tan^{-1} \left( \frac{1}{\sqrt{x^2 - 1}} \right), \quad |x| > 1$
+\item $tan^{-1} \left( \frac{1 - \cos x}{\sin x} \right), \quad 0 < x < \pi$
+\item $tan^{-1} \left( \frac{1 - \cos x}{\sin x} \right) + tan^{-1} \left( \frac{\sin x}{1 + \cos x} \right), \quad -\frac{\pi}{4} < x < \frac{3\pi}{4}$
+\end{enumerate}
+\end{enumerate}
+\end{document}
