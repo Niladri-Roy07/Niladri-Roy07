@@ -1,0 +1,62 @@
+1) Write  a program to read n numbers from the keyboard and find their sum
+#include <stdio.h>
+int main(){
+    int i,n,num,sum=0;
+    printf("Enter how many numbers:");
+    scanf("%d", &n);
+    for(i = 1; i<=n; i++){
+      printf("Enter the number:");
+      scanf("%d", &num);
+      sum=sum+num;
+    }
+    printf("sum=%d\n", sum);
+    return 0;
+}
+2) Write a program to read a number n, and print sum of all the numbers from 1 to n
+#include <stdio.h>
+
+int main() {
+    int n, sum;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    sum = (n * (n + 1)) / 2; 
+    printf("Sum of numbers from 1 to %d is: %d\n", n, sum);
+
+    return 0;
+}
+3) Write a program to read a number n and print the factorial of n.
+#include <stdio.h>
+
+int main(){
+    int n, i;
+    int fact = 1; 
+
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+    if (n < 0) {
+        printf("Factorial is not defined:");
+    } else {
+        i = 1;
+        while (i <= n) {
+            fact = fact * i;
+            i++;
+        }
+        printf("Factorial of %d is: %d\n", n, fact);
+    }
+
+    return 0;
+}
+4)Write a program to multiply two numbers without using * operator,
+#include <stdio.h>
+#define v *
+int main() {
+    int a, b, z;
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    z = a v b;  
+    printf("The value of z: %d\n", z);
+    return 0;
+}
