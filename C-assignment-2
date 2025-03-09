@@ -1,0 +1,290 @@
+1) Read n number of numbers from user (n value taken as input) and print if each number is even or odd.
+#include <stdio.h>
+int main(){
+    int n;
+    printf("Enter the number: ");
+    scanf("%d", &n);
+
+    if (n % 2 == 0) {
+        printf("The number is even.\n");
+    } else {
+        printf("The number is odd.\n");
+    }
+
+    return 0;
+}
+2) Read n characters from user, and print if each character is vowel or not.
+#include <stdio.h>
+int main() {
+    int n;
+    printf("Enter the number of characters: ");
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++) {
+        char ch;
+        printf("Enter a character: ");
+        scanf(" %c", &ch); 
+
+        if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
+            ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U') {
+            printf("%c is a vowel.\n", ch);
+        } else {
+            printf("%c is not a vowel.\n", ch);
+        }
+    }
+
+    return 0;
+}
+3) Read n characters from user and print if each character is a capital alphabet, small alphabet, numeric character  or special character.
+#include <stdio.h>
+int main() {
+    int n;
+    char ch;
+    printf("Enter the number of characters: ");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        printf("Enter a character: ");
+        scanf(" %c", &ch); 
+
+        if (ch >= 'A' && ch <= 'Z') {
+            printf("%c is a Capital Alphabet.\n", ch);
+        } 
+        else if (ch >= 'a' && ch <= 'z') {
+            printf("%c is a Small Alphabet.\n", ch);
+        } 
+        else if (ch >= '0' && ch <= '9') {
+            printf("%c is a Numeric Character.\n", ch);
+        } 
+        else {
+            printf("%c is a Special Character.\n", ch);
+        }
+    }
+
+    return 0;
+}
+4) Read n numbers from the user, and while reading every number, print if the number is bigger or smaller than the previous number. For the first number, there won't be any output as it is the first one.
+#include <stdio.h>
+int main() {
+    int n, prev, curr;
+    printf("Enter the number of numbers: ");
+    scanf("%d", &n);
+    printf("Enter a number: ");
+    scanf("%d", &prev); 
+
+    while (--n > 0) { 
+        printf("Enter a number: ");
+        scanf("%d", &curr);
+
+        if (curr > prev)
+            printf("%d is bigger than %d.\n", curr, prev);
+        else if (curr < prev)
+            printf("%d is smaller than %d.\n", curr, prev);
+        else
+            printf("%d is equal to %d.\n", curr, prev);
+
+        prev = curr; 
+    }
+
+    return 0;
+}
+5) Read n numbers in ascending order. If a number entered is bigger than the previous number, then count it. If it is smaller, then don't count it, instead let the loop repeat itself and read another number
+#include <stdio.h>
+int main() {
+    int n, count = 1, prev, curr;
+    printf("Enter the number of numbers: ");
+    scanf("%d", &n);
+    printf("Enter number 1: ");
+    scanf("%d", &prev);  
+    for (int i = 1; i < n; ) {  
+        printf("Enter number %d: ", i + 1);
+        scanf("%d", &curr);
+
+        if (curr > prev) {  
+            count++;
+            prev = curr;  
+            i++;  // Move to next count
+        } else {
+            printf("Number must be greater than %d. Try again.\n", prev);
+        }
+    }
+    printf("You entered %d valid increasing numbers.\n", count);
+    return 0;
+}
+6) Read  n numbers from the user ,and print the smallest number of all.
+#include <stdio.h>
+int main() {
+    int n, num, smallest;
+    printf("Enter the number of numbers: ");
+    scanf("%d", &n);
+    if (n <= 0) {
+        printf("Invalid input! Enter a positive number.\n");
+        return 1;
+    }
+    printf("Enter number 1: ");
+    scanf("%d", &smallest); // Assume first number is the smallest
+    for (int i = 1; i < n; i++) {
+        printf("Enter number %d: ", i + 1);
+        scanf("%d", &num);
+        if (num < smallest) {
+            smallest = num; // Update smallest if a smaller number is found
+        }
+    }
+
+    printf("The smallest number is: %d\n", smallest);
+
+    return 0;
+}
+7) Read a number from the user, and print its multiplication table upto 10 multiples.
+#include <stdio.h>
+int main() {
+    int num;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    for (int i = 1; i <= 10; i++) {
+        printf("%d%d = %d\n", num, i, num * i);
+    }
+
+    return 0;
+}
+8) For n students from a class, read 6 subject marks for every student, and calculate their percentage of marks, and print who is the topper of all (print the student number).
+#include <stdio.h>
+int main() {
+    int n, i, j, totalMarks, topper = 0;
+    float percentage, highestPercentage = 0;
+
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+
+    for (i = 1; i <= n; i++) {
+        totalMarks = 0;
+        printf("Enter marks for Student %d (6 subjects):\n", i);
+
+        for (j = 0; j < 6; j++) {
+            int marks;
+            printf("Subject %d: ", j + 1);
+            scanf("%d", &marks);
+            totalMarks += marks;  
+        }
+        percentage = (totalMarks / 6.0); 
+        printf("Student %d - Percentage: %.2f%%\n", i, percentage);
+
+        if (percentage > highestPercentage){ 
+            highestPercentage = percentage;
+            topper = i;
+        }
+    }
+    printf("\nTopper: Student %d with %.2f%% marks\n", topper, highestPercentage);
+
+    return 0;
+}
+9) Read two numbers from the user, and print all serial numbers between those numbers.
+#include <stdio.h>
+int main() {
+    int start, end;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &start, &end);
+    if (start > end) {  // Swap if start is greater than end
+        int temp = start;
+        start = end;
+        end = temp;
+    }
+    printf("Serial numbers between %d and %d:\n", start, end);
+    for (int i = start; i <= end; i++) {
+        printf("%d ", i);
+    }
+    printf("\n");
+    return 0;
+}
+10) write the calculator program to read two numbers and one character (+, -, *, / , %) from the user, and based on character, do appropriate operations on numbers and print the output. Modify the program to repeat this task n number of times.
+#include <stdio.h>
+int main() {
+    int n, num1, num2;
+    char op;
+    printf("Enter the number of calculations to perform: ");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        printf("\nEnter first number: ");
+        scanf("%d", &num1);
+        printf("Enter an operator (+, -, *, /, %): ");
+        scanf(" %c", &op); // Space before %c to handle newline issue
+        printf("Enter second number: ");
+        scanf("%d", &num2);
+
+        switch (op) {
+            case '+': 
+                printf("Result: %d + %d = %d\n", num1, num2, num1 + num2);
+                break;
+            case '-': 
+                printf("Result: %d - %d = %d\n", num1, num2, num1 - num2);
+                break;
+            case '*': 
+                printf("Result: %d * %d = %d\n", num1, num2, num1 * num2);
+                break;
+            case '/': 
+                if (num2 != 0) 
+                    printf("Result: %d / %d = %.2f\n", num1, num2, (float)num1 / num2);
+                else 
+                    printf("Error: Division by zero is not allowed.\n");
+                break;
+            case '%': 
+                if (num2 != 0) 
+                    printf("Result: %d %% %d = %d\n", num1, num2, num1 % num2);
+                else 
+                    printf("Error: Modulo by zero is not allowed.\n");
+                break;
+            default:
+                printf("Invalid operator! Please use +, -, *, /, or %%.\n");
+        }
+    }
+
+    return 0;
+}
+11) Read two numbers from the user, and print all odd numbers between those numbers and then all even numbers.
+#include <stdio.h>
+int main() {
+    int start, end;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &start, &end);
+    if (start > end) {
+        int temp = start;
+        start = end;
+        end = temp;
+    }
+    printf("\nOdd numbers between %d and %d:\n", start, end);
+    for (int i = start; i <= end; i++) {
+        if (i % 2 != 0) {
+            printf("%d ", i);
+        }
+    }
+    printf("\nEven numbers between %d and %d:\n", start, end);
+    for (int i = start; i <= end; i++) {
+        if (i % 2 == 0) {
+            printf("%d ", i);
+        }
+    }
+
+    printf("\n");
+    return 0;
+}
+12) Read two numbers from the user, and print all numbers in reverse order
+#include <stdio.h>
+int main() {
+    int start, end;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &start, &end);
+    if (start < end) {
+        int temp = start;
+        start = end;
+        end = temp;
+    }
+    printf("\nNumbers in reverse order:\n");
+    for (int i = start; i >= end; i--) {
+        printf("%d ", i);
+    }
+
+    printf("\n");
+    return 0;
+}
+
