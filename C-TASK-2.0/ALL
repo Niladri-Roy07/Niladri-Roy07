@@ -246,5 +246,234 @@ int main() {
 
     return 0;
 }
+Write a function that takes two numbers a and b as input arguments and returns their product as return value , without using * operator.
+#include <stdio.h>
+#define v *
+
+int main() {
+    int a, b, z;
+    printf("Enter the value of a: ");
+    scanf("%d", &a);
+
+    printf("Enter the value of b: ");
+    scanf("%d", &b);
+    z = a v b; 
+    printf("The multiplication of a and b is: %d\n", z);
+
+    return 0;
+}
+Write a function that takes two numbers a and b, and returns the remainder after dividing a with b
+#include <stdio.h>
+int getRemainder(int a, int b) {
+    return a % b;  
+}
+
+int main() {
+    int a, b;
+    printf("Enter two numbers a and b: ");
+    scanf("%d %d", &a, &b);
+    if (b == 0) {
+        printf("Error! Division by zero is not allowed.\n");
+    } else {
+        printf("Remainder when %d is divided by %d is: %d\n", a, b, getRemainder(a, b));
+    }
+
+    return 0;
+}
+ Write a function that takes an integer number as input and prints its multiplication table.return type is  void.
+#include <stdio.h>
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    for (int i = 1; i <= 10; i++) {
+        printf("%d x %d = %d\n", n, i, n * i);
+    }
+
+    return 0;
+}
+Write a function to determine if a character is alphanumeric or not and print the appropriate output in main function.
+#include <stdio.h>
+#include <ctype.h>  
+int isAlphanumeric(char ch) {
+    return isalnum(ch); 
+}
+int main() {
+    char ch;
+    printf("Enter a character: ");
+    scanf(" %c", &ch);
+
+    if (isAlphanumeric(ch))
+        printf("Alphanumeric\n");
+    else
+        printf("Not Alphanumeric\n");
+
+    return 0;
+}
+Write a calculator program with 5 functions below to do the operations of addition, subtraction, multiplication, division for quotient and division for remainder.
+1) int add (int a, int b) // to be called when user chooses +
+2) int sub (int a,int b) // to be called when user chooses -
+3) int mul(int a, int b) // to be called when user chooses *
+4) int quotient(int a, int b) // to be called when user chooses /
+5) int remainder(int a,int b) // to be called when user choose%
+#include <stdio.h>
+int add(int a, int b) { return a + b; }
+int sub(int a, int b) { return a - b; }
+int mul(int a, int b) { return a * b; }
+int quotient(int a, int b) { return (b != 0) ? a / b : 0; }
+int remainder(int a, int b) { return (b != 0) ? a % b : 0; }
+
+int main() {
+    int a, b;
+    char op;
+    printf("Enter an operator (+, -, *, /, %%): ");
+    scanf(" %c", &op);
+
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    switch (op) {
+        case '+': printf("Result: %d\n", add(a, b)); break;
+        case '-': printf("Result: %d\n", sub(a, b)); break;
+        case '*': printf("Result: %d\n", mul(a, b)); break;
+        case '/': 
+            if (b != 0) printf("Result: %d\n", quotient(a, b));
+            else printf("Error! Division by zero.\n");
+            break;
+        case '%': 
+            if (b != 0) printf("Result: %d\n", remainder(a, b));
+            else printf("Error! Division by zero.\n");
+            break;
+        default: printf("Invalid operator!\n");
+    }
+
+    return 0;
+}
+
+Write a function to accept a year as input and return 1 if the year is a leap year, otherwise 0
+#include <stdio.h>
+int isLeapYear(int year){
+    return (year % 4 == 0);
+}
+
+int main() {
+    int year;
+    
+    printf("Enter a year: ");
+    scanf("%d", &year);
+
+    if (isLeapYear(year))
+        printf("%d is a Leap Year\n", year);
+    else
+        printf("%d is NOT a Leap Year\n", year);
+
+    return 0;
+}
+Write a function to accept a month and year as input, and return the number of days in that month as output. print the number of days in main
+#include <stdio.h>
+int getDaysInMonth(int month, int year) {
+    int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (month == 2 && ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)))
+        return 29; // Leap year, February has 29 days
+
+    return days[month - 1]; 
+}
+
+int main() {
+    int month, year;
+    
+    // Taking input
+    printf("Enter month (1-12): ");
+    scanf("%d", &month);
+    
+    printf("Enter year: ");
+    scanf("%d", &year);
+
+    // Checking if month input is valid
+    if (month < 1 || month > 12)
+        printf("Invalid month!\n");
+    else
+        printf("Number of days: %d\n", getDaysInMonth(month, year));
+
+    return 0;
+}
+Write a function ,that can take two integers, swap their values and print their new values. return type should be void. function should print the values.
+#include <stdio.h>
+void swap(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+    printf("After swapping: a = %d, b = %d\n", a, b);
+}
+
+int main() {
+    int a, b;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+    printf("Before swapping: a = %d, b = %d\n", a, b);
+    swap(a, b);
+
+    return 0;
+}
+Write a function that takes 2 dates as inputs, and returns 1 if the first date is old, 2 if the second date is old.
+#include <stdio.h>
+int compareDates(int d1, int m1, int y1, int d2, int m2, int y2) {
+    if (y1 < y2) return 1;  
+    if (y1 > y2) return 2;  
+    if (m1 < m2) return 1;  
+    if (m1 > m2) return 2;  
+    if (d1 < d2) return 1;  
+    if (d1 > d2) return 2;  
+    
+    return 0; 
+}
+
+int main() {
+    int d1, m1, y1, d2, m2, y2;
+    printf("Enter first date (DD MM YYYY): ");
+    scanf("%d %d %d", &d1, &m1, &y1);
+    printf("Enter second date (DD MM YYYY): ");
+    scanf("%d %d %d", &d2, &m2, &y2);
+    int result = compareDates(d1, m1, y1, d2, m2, y2);
+    if (result == 1)
+        printf("First date is older.\n");
+    else if (result == 2)
+        printf("Second date is older.\n");
+    else
+        printf("Both dates are the same.\n");
+
+    return 0;
+}
+
+Write a  function that takes a date as input, and returns 1 if the date is valid, 0 if the date is invalid.
+#include <stdio.h>
+int isLeapYear(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+int isValidDate(int d, int m, int y) {
+    if (y < 1) return 0; 
+    if (m < 1 || m > 12) return 0;
+    int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (m == 2 && isLeapYear(y)) {
+        daysInMonth[2] = 29;
+    }
+    if (d < 1 || d > daysInMonth[m]) return 0;
+
+    return 1; 
+}
+
+int main() {
+    int d, m, y;
+    printf("Enter date (DD MM YYYY): ");
+    scanf("%d %d %d", &d, &m, &y);
+    if (isValidDate(d, m, y))
+        printf("The date is valid.\n");
+    else
+        printf("The date is invalid.\n");
+
+    return 0;
+}
+
+
+
 
 
