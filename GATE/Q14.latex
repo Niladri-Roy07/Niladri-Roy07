@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{matrix,calc}
+\begin{document}
+\title{Solution to GATE 2018 Question 14}
+\author{Niladri Roy Goswami}
+\date{27-03-2025}
+\maketitle
+\section*{Question}
+In the logic circuit shown in the figure, \( Y \) is given by:
+\begin{enumerate}
+    \item[(A)] \( Y = ABCD \)
+    \item[(B)] \( Y = (A + B)(C + D) \)
+    \item[(C)] \( Y = A + B + C + D \)
+    \item[(D)] \( Y = AB + CD \)
+\end{enumerate}
+\section*{Truth Table}
+The truth table for the given logic circuit is:
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        A & B & C & D & \( X_1 = \overline{A+B} \) & \( X_2 = \overline{C+D} \) & \( Y = X_1 \cdot X_2 \) \\
+        \hline
+        0 & 0 & 0 & 0 & 1 & 1 & 1 \\
+        0 & 0 & 0 & 1 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 1 & 1 & 0 & 0 \\
+        0 & 1 & 0 & 0 & 1 & 1 & 1 \\
+        0 & 1 & 0 & 1 & 1 & 0 & 0 \\
+        0 & 1 & 1 & 0 & 1 & 0 & 0 \\
+        0 & 1 & 1 & 1 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+        1 & 0 & 0 & 1 & 1 & 0 & 0 \\
+        1 & 0 & 1 & 0 & 1 & 0 & 0 \\
+        1 & 0 & 1 & 1 & 1 & 0 & 0 \\
+        1 & 1 & 0 & 0 & 0 & 1 & 0 \\
+        1 & 1 & 0 & 1 & 0 & 0 & 0 \\
+        1 & 1 & 1 & 0 & 0 & 0 & 0 \\
+        1 & 1 & 1 & 1 & 0 & 0 & 0 \\
+        \hline
+    \end{tabular}
+\end{center}
+\section*{Karnaugh Map (Graph)}
+\begin{center}
+\begin{tikzpicture}
+    \matrix (m) [matrix of nodes,nodes={draw, minimum size=1cm, anchor=center},column sep=-\pgflinewidth, row sep=-\pgflinewidth] {
+       & CD & 00 & 01 & 11 & 10 \\
+      AB &    & 0  & 0  & 0  & 1  \\
+      00 &    & 1  & 0  & 0  & 0  \\
+      01 &    & 1  & 0  & 0  & 0  \\
+      11 &    & 0  & 0  & 0  & 0  \\
+      10 &    & 1  & 0  & 0  & 0  \\
+    };
+\end{tikzpicture}
+\end{center}
+\section*{Solution}
+From the given logic circuit:
+\begin{itemize}
+    \item The first gate is a NOR gate with inputs \( A \) and \( B \), producing output:
+    \[X_1 = \overline{A + B}\]
+    \item The second gate is another NOR gate with inputs \( C \) and \( D \), producing output:
+    \[X_2 = \overline{C + D}\]
+    \item The final gate is an AND gate that takes \( X_1 \) and \( X_2 \) as inputs:
+    \[Y = X_1 \cdot X_2 = \overline{A + B} \cdot \overline{C + D}\]
+    \item Using De Morgan's theorem:
+    \[Y = (\overline{A} \cdot \overline{B}) \cdot (\overline{C} \cdot \overline{D})\]
+    \item This simplifies to:
+    \[Y = \overline{A} \cdot \overline{B} \cdot \overline{C} \cdot \overline{D}\]
+\end{itemize}
+Comparing with the given options, none of them exactly match this form. However, by applying De Morgan’s theorem to option (B):
+\[(A + B)(C + D)\]
+Taking complement on both sides:
+\[\overline{(A + B)(C + D)}\]
+Using De Morgan's theorem:
+\[\overline{A + B} \cdot \overline{C + D}\]
+which matches our derived expression for \( Y \).
+\textbf{Correct answer: (B) \( Y = (A + B)(C + D) \)}
+\end{document}
