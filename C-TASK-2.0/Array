@@ -1,0 +1,452 @@
+1 Write the following program :
+Declare an integer array of size 100.
+Assign numbers 1-100 to each element of the array.
+Print all the numbers.
+Print all even elements.
+Print all odd elements.
+Add also 5 to each element and print 6 – 105 numbers.
+#include <stdio.h>
+int main() {
+    int i;
+    
+    printf("All numbers:\n");
+    for (i = 1; i <= 100; i++) 
+    printf("%d ", i);
+    printf("\n\nEven numbers:\n");
+    for (i = 2; i <= 100; i += 2) 
+    printf("%d ", i);
+    printf("\n\nOdd numbers:\n");
+    for (i = 1; i <= 100; i += 2) 
+    printf("%d ", i);
+    printf("\n\nNumbers after adding 5:\n");
+    for (i = 6; i <= 105; i++) 
+    printf("%d ", i);
+    printf("\n");
+    
+    return 0;
+}
+2 Write the following program :
+Declare a character array without size.
+Initialize the array with characters of your name.
+Print your name using for loop.
+
+
+#include <stdio.h>
+int main() {
+    char name[] = "Niladri"; 
+    
+    printf("Your name: ");
+    for (int i = 0; name[i] != '\0'; i++) {
+        printf("%c", name[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+
+3 Declare an array of size 10. Enter 10 elements and save them in the array. Print the array . Find out the biggest and smallest numbers and their indexes and print.
+#include <stdio.h>
+int main() {
+    int arr[10], i, max, min;
+    printf("Enter 10 numbers:\n");
+    for (i = 0; i < 10; i++) 
+    scanf("%d", &arr[i]);
+    max = min = arr[0];
+    for (i = 1; i < 10; i++) {
+        if (arr[i] > max) max = arr[i];
+        if (arr[i] < min) min = arr[i];
+    }
+    printf("Array: ");
+    for (i = 0; i < 10; i++) 
+    printf("%d ", arr[i]);
+    printf("\nBiggest: %d\nSmallest: %d\n", max, min);
+    return 0;
+}
+4 Try experimenting with the below array syntaxes and see the results,check their sizes, try to also read values for elements and print them:</br>
+#include <stdio.h>
+int main() {
+    int arr1[5] = {1, 2, 3, 4, 5};
+    int arr2[] = {10, 20, 30};
+    int arr3[5] = {0};
+    int arr4[5];
+    printf("Size of arr1: %lu bytes\n", sizeof(arr1));
+    printf("Size of arr2: %lu bytes\n", sizeof(arr2));
+    printf("Size of arr3: %lu bytes\n", sizeof(arr3));
+    printf("Size of arr4: %lu bytes\n", sizeof(arr4));
+    printf("Enter 5 values for arr4:\n");
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &arr4[i]);
+    }
+    printf("arr4 values: ");
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", arr4[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+4.Try experimenting with the below array syntaxes and see the results,check their sizes, try to also read values for elements and print them:</br>
+int arr[5] = {};
+int arr[10] = {2.4,5.6,7.3};
+int arr[3] = {1,2,3,4,5};
+int arr[0] = {};
+int arr[0] = {1,2,3,4,5};
+int arr[] = {};
+int arr[‘a’];
+#include <stdio.h>
+int main() {
+    int arr1[5] = {0}; 
+    int arr2[10] = {2, 5, 7}; 
+    int arr3[] = {1, 2, 3}; 
+    int arr4[97]; 
+    printf("Size of arr1: %lu bytes\\n", sizeof(arr1));
+    printf("Size of arr2: %lu bytes\\n", sizeof(arr2));
+    printf("Size of arr3: %lu bytes\\n", sizeof(arr3));
+    printf("Size of arr4 (based on 'a'): %lu bytes\\n", sizeof(arr4));
+    printf("Enter 5 values for arr1:\\n");
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &arr1[i]);
+    }
+
+    printf("arr1 values: ");
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", arr1[i]);
+    }
+    printf("\\n");
+
+    return 0;
+}
+5 Write the following program.
+Declare an integer variable ‘size’.
+Take the value of ‘size’ from user using scanf.
+Declare an array of any datatype, and give the integer variable ‘size’, in place of size of the array  and initialize it to some values.(syntax: float array[size] = {1.0,2.5};)
+Using for loop, try to take user input using scanf. Loop should execute ‘size’ number of times.
+Using for loop, print the elements of the array.
+#include <stdio.h>
+int main() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+    float array[size];
+    printf("Enter %d float values:\n", size);
+    for (int i = 0; i < size; i++) {
+        scanf("%f", &array[i]);
+    }
+    printf("Array elements:\n");
+    for (int i = 0; i < size; i++) {
+        printf("%.2f ", array[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+6 Write a function to search for a specific element given by the user, in an array and display its index.  Function takes array and element to search as inputs, and returns the index as output. If element not found, return -1.
+#include <stdio.h>
+int search(int arr[], int size, int target) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == target) 
+        return i;
+    }
+    return -1;
+}
+int main() {
+    int arr[5], target;
+    printf("Enter 5 numbers: ");
+    for (int i = 0; i < 5; i++) 
+    scanf("%d", &arr[i]);
+    printf("Enter number to search: ");
+    scanf("%d", &target);
+    int index = search(arr, 5, target);
+    if (index != -1) 
+    printf("Found at index %d\n", index);
+    else printf("Not found\n");
+    
+    return 0;
+}
+7 Write a program to print an array in reverse order.
+#include <stdio.h>
+int main() {
+    int arr[5];
+    printf("Enter 5 numbers: ");
+    for (int i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+    printf("Reversed array: ");
+    for (int i = 4; i >= 0; i--) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+8 Write a program to reverse an array and print it (Reverse the array by swapping both edges of the array and move inside and repeat till middle of the array):  
+#include <stdio.h>
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};
+    int start = 0, end = 4, temp;
+    while (start < end) {
+        temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+    
+    printf("Reversed array: ");
+    for (int i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    
+    return 0;
+}
+9 Write a program to print an integer in binary format using arrays.
+
+#include <stdio.h>
+void printBinary(int num) {
+    int binary[32], i = 0;
+    while (num > 0) {
+        binary[i] = num % 2;
+        num /= 2;
+        i++;
+    }
+    printf("Binary: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", binary[j]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int num;
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+    if (num == 0) {
+        printf("Binary: 0\n");
+    } else {
+        printBinary(num);
+    }
+    
+    return 0;
+}
+10 Write a program to swap two arrays in reverse order.
+#include <stdio.h>
+void printBinary(int num) {
+    int binary[32], i = 0;
+    while (num > 0) {
+        binary[i] = num % 2;
+        num /= 2;
+        i++;
+    }
+    printf("Binary: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", binary[j]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int num;
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+    if (num == 0) {
+        printf("Binary: 0\n");
+    } else {
+        printBinary(num);
+    }
+    
+    return 0;
+11 Write a function to return the average of marks of all students in a class.
+#include <stdio.h>
+
+float calculateAverage(int marks[], int size) {
+    if (size <= 0) return 0; // Handle invalid input
+    
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += marks[i];
+    }
+    return (float)sum / size;
+}
+
+int main() {
+    int size;
+    
+    printf("Enter number of students: ");
+    if (scanf("%d", &size) != 1 || size <= 0) {
+        printf("Invalid input.\n");
+        return 1;
+    }
+    
+    int marks[size];
+    printf("Enter marks of %d students: ", size);
+    for (int i = 0; i < size; i++) {
+        if (scanf("%d", &marks[i]) != 1) {
+            printf("Invalid input.\n");
+            return 1;
+        }
+    }
+    
+    float avg = calculateAverage(marks, size);
+    printf("Average marks: %.2f\n", avg);
+    
+    return 0;
+}
+12 Write a function to modify the array such that all negative numbers are converted to positive
+#include <stdio.h>
+void convertToPositive(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] < 0) {
+            arr[i] = -arr[i]; 
+        }
+    }
+}
+int main() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter %d elements: ", size);
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+    convertToPositive(arr, size);
+    printf("Modified array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
+13) write a function to take 2 arrays as input and return 1 if they are equal and 0 if they are not equal ( sizes to be sent as seperate arguments)
+#include <stdio.h>
+int areArraysEqual(int arr1[], int arr2[], int size1, int size2) {
+    if (size1 != size2) 
+    return 0; 
+    for (int i = 0; i < size1; i++) {
+        if (arr1[i] != arr2[i]) 
+        return 0; 
+    }
+    return 1; 
+}
+int main() {
+    int size1, size2;
+    printf("Enter size of first array: ");
+    scanf("%d", &size1);
+    int arr1[size1];
+    printf("Enter %d elements: ", size1);
+    for (int i = 0; i < size1; i++) {
+        scanf("%d", &arr1[i]);
+    }
+    printf("Enter size of second array: ");
+    scanf("%d", &size2);
+    int arr2[size2];
+    printf("Enter %d elements: ", size2);
+    for (int i = 0; i < size2; i++) {
+        scanf("%d", &arr2[i]);
+    }
+    
+    if (areArraysEqual(arr1, arr2, size1, size2)) {
+        printf("Arrays are equal\n");
+    } else {
+        printf("Arrays are not equal\n");
+    }
+    
+    return 0;
+}
+
+#include <stdio.h>
+int areArraysEqual(int arr1[], int arr2[], int size1, int size2) {
+    if (size1 != size2) 
+    return 0; 
+    for (int i = 0; i < size1; i++) {
+        if (arr1[i] != arr2[i]) 
+        return 0; 
+    }
+    return 1; 
+}
+int main() {
+    int size1, size2;
+    printf("Enter size of first array: ");
+    scanf("%d", &size1);
+    int arr1[size1];
+    printf("Enter %d elements: ", size1);
+    for (int i = 0; i < size1; i++) {
+        scanf("%d", &arr1[i]);
+    }
+    printf("Enter size of second array: ");
+    scanf("%d", &size2);
+    int arr2[size2];
+    printf("Enter %d elements: ", size2);
+    for (int i = 0; i < size2; i++) {
+        scanf("%d", &arr2[i]);
+    }
+    
+    if (areArraysEqual(arr1, arr2, size1, size2)) {
+        printf("Arrays are equal\n");
+    } else {
+        printf("Arrays are not equal\n");
+    }
+    
+    return 0;
+}
+
+13) write a function to take 2 arrays as input and return 1 if they are equal and 0 if they are not equal ( sizes to be sent as seperate arguments)
+#include <stdio.h>
+int areArraysEqual(int arr1[], int arr2[], int size1, int size2) {
+    if (size1 != size2) return 0;
+    for (int i = 0; i < size1; i++) {
+        if (arr1[i] != arr2[i]) return 0;
+    }
+    return 1;
+}
+int main() {
+    int size1, size2;
+    printf("Enter size of first array: ");
+    scanf("%d", &size1);
+    int arr1[size1];
+    printf("Enter elements of first array: ");
+    for (int i = 0; i < size1; i++) {
+        scanf("%d", &arr1[i]);
+    }
+    printf("Enter size of second array: ");
+    scanf("%d", &size2);
+    int arr2[size2];
+    printf("Enter elements of second array: ");
+    for (int i = 0; i < size2; i++) {
+        scanf("%d", &arr2[i]);
+    }
+    printf(areArraysEqual(arr1, arr2, size1, size2) ? "Arrays are equal\n" : "Arrays are not equal\n");
+    
+    return 0;
+}
+14) write a function to take an array as input, and count how many times the biggest number is repeated in that array, and return the count.
+#include <stdio.h>
+int countMaxOccurrences(int arr[], int size) {
+    int max = arr[0], count = 1;
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+            count = 1;
+        } else if (arr[i] == max) {
+            count++;
+        }
+    }
+    return count;
+}
+int main() {
+    int size;
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+    int arr[size];
+    printf("Enter %d elements: ", size);
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+    int count = countMaxOccurrences(arr, size);
+    printf("The biggest number is repeated %d times.\n", count);
+    
+    return 0;
+}
+
+
