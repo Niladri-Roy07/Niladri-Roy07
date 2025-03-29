@@ -1,0 +1,42 @@
+1) Write a function to calculate simple interest. Call it in main function with appropriate inputs and print the total amount the user will get after the tenure (principle + interest)
+#include <stdio.h>
+float calculateSimpleInterest(float principal, float rate, float time) {
+    return (principal * rate * time) / 100;
+}
+int main() {
+    float principal, rate, time;
+    printf("Enter Principal amount: ");
+    scanf("%f", &principal);
+    printf("Enter Annual Interest Rate (in %%): ");
+    scanf("%f", &rate);
+    printf("Enter Time (in years): ");
+    scanf("%f", &time);
+    float interest = calculateSimpleInterest(principal, rate, time);
+    float totalAmount = principal + interest;
+    printf("Simple Interest: %.2f\n", interest);
+    printf("Total Amount after tenure: %.2f\n", totalAmount);
+    
+    return 0;
+}
+2) Write a function that takes two numbers, a and n as input arguments and returns the value of a to the power of n.
+#include <stdio.h>
+double power(double a, int n) {
+    double result = 1;
+    for (int i = 0; i < n; i++) {
+        result *= a;
+    }
+    return result;
+}
+int main() {
+    double a;
+    int n;
+    printf("Enter base (a): ");
+    scanf("%lf", &a);
+    printf("Enter exponent (n): ");
+    scanf("%d", &n);
+    double result = power(a, n);
+    printf("%.2lf^%d = %.2lf\n", a, n, result);
+    return 0;
+}
+3) Write a function that takes two numbers a and b as input arguments and returns their product as return value , without using * operator.
+
