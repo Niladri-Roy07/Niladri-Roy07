@@ -1,0 +1,96 @@
+1 Write a program to print the address of a variable , its value ,its size, try different executions and note the address printed. Assign the address of the variable to a pointer variable.Print the size of pointer and its indirected value (apply * operator)
+#include <stdio.h>
+int main() {
+    int var = 10;
+    int *ptr = &var;
+    printf("Address of variable: %p\n", (void*)&var);
+    printf("Value of variable: %d\n", var);
+    printf("Size of variable: %lu bytes\n", sizeof(var));
+    printf("Address stored in pointer: %p\n", (void*)ptr);
+    printf("Size of pointer: %lu bytes\n", sizeof(ptr));
+    printf("Value pointed by pointer: %d\n", *ptr);
+    return 0;
+}
+2 Write a program to add two variables using their pointers.
+#include <stdio.h>
+int main() {
+    int var1 = 10, var2 = 20;
+    int *ptr1 = &var1, *ptr2 = &var2;
+    int sum = *ptr1 + *ptr2; 
+    printf("Address of variable 1: %p\n", (void*)&var1);
+    printf("Value of variable 1: %d\n", var1);
+    printf("Address of variable 2: %p\n", (void*)&var2);
+    printf("Value of variable 2: %d\n", var2);
+    printf("Sum using pointers: %d\n", sum);
+    
+    return 0;
+}
+3 Write a program to take input for two character variables using pointers and find out which character has higher ascii value.
+#include <stdio.h>
+int main() {
+    char ch1, ch2;
+    char *ptr1 = &ch1, *ptr2 = &ch2;
+    printf("Enter first character: ");
+    scanf(" %c", ptr1);
+    printf("Enter second character: ");
+    scanf(" %c", ptr2);
+    if (*ptr1 > *ptr2) {
+        printf("%c has a higher ASCII value than %c\n", *ptr1, *ptr2);
+    } else if (*ptr1 < *ptr2) {
+        printf("%c has a higher ASCII value than %c\n", *ptr2, *ptr1);
+    } else {
+        printf("Both characters have the same ASCII value.\n");
+    }
+    
+    return 0;
+}
+
+4. Declare 3 integer variables. Declare an integer pointer. Assign the address of each variable to the pointer in succession and print the value of the variable using indirection operator on the pointer.
+#include <stdio.h>
+int main() {
+    int a = 10, b = 20, c = 30;
+    int *ptr;
+    ptr = &a;
+    printf("Value of a using pointer: %d\n", *ptr);
+    ptr = &b;
+    printf("Value of b using pointer: %d\n", *ptr);
+    ptr = &c;
+    printf("Value of c using pointer: %d\n", *ptr);
+    
+    return 0;
+}
+5 Declare 3 pointer variables of integer type, and an integer variable. Assign the address of integer variable to the 3 pointers. Print the variable value using indirection on each pointer variable. Change the variable value directly and check the values of each of the pointers using indirection. Change the variable value , using each pointer and print the variable value and indirected values of all pointers every time you change.
+#include <stdio.h>
+int main() {
+    int num = 10;
+    int *ptr1, *ptr2, *ptr3;
+    ptr1 = &num;
+    ptr2 = &num;
+    ptr3 = &num;
+    printf("Initial value using ptr1: %d\n", *ptr1);
+    printf("Initial value using ptr2: %d\n", *ptr2);
+    printf("Initial value using ptr3: %d\n", *ptr3);
+    num = 20;
+    printf("\nAfter changing num directly:\n");
+    printf("Value using ptr1: %d\n", *ptr1);
+    printf("Value using ptr2: %d\n", *ptr2);
+    printf("Value using ptr3: %d\n", *ptr3);
+    *ptr1 = 30;
+    printf("\nAfter changing value using ptr1:\n");
+    printf("Value using ptr1: %d\n", *ptr1);
+    printf("Value using ptr2: %d\n", *ptr2);
+    printf("Value using ptr3: %d\n", *ptr3);
+    *ptr2 = 40;
+    printf("\nAfter changing value using ptr2:\n");
+    printf("Value using ptr1: %d\n", *ptr1);
+    printf("Value using ptr2: %d\n", *ptr2);
+    printf("Value using ptr3: %d\n", *ptr3);
+    *ptr3 = 50;
+    printf("\nAfter changing value using ptr3:\n");
+    printf("Value using ptr1: %d\n", *ptr1);
+    printf("Value using ptr2: %d\n", *ptr2);
+    printf("Value using ptr3: %d\n", *ptr3);
+
+    return 0;
+}
+
