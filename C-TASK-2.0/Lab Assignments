@@ -1,0 +1,141 @@
+1) Write down a macro to find out the biggest of two numbers.
+MAX(x,y) should define code to find biggest of x and y. Implement array sorting function using this macro (Bubble sort)
+#include <stdio.h>
+#define MAX(x, y) ((x) > (y) ? (x) : (y))
+void bubbleSort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {  
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int arr[] = {5, 3, 8, 1, 2};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Original array: ");
+    printArray(arr, size);
+
+    bubbleSort(arr, size);
+
+    printf("Sorted array: ");
+    printArray(arr, size);
+
+    return 0;
+}
+2)  Write down a macro to find the biggest of four numbers using biggest of 2 macro.
+#include <stdio.h>
+#define MAX(x, y) ((x) > (y) ? (x) : (y))
+#define MAX4(a, b, c, d) (MAX(MAX(a, b), MAX(c, d)))
+int main() {
+    int a = 10, b = 25, c = 15, d = 3;
+
+    printf("The biggest number is: %d\n", MAX4(a, b, c, d));
+
+    return 0;
+}
+3)  WAP to print if  a character is alphanumeric or special character, using macro conditions
+#include <stdio.h>
+#define IS_ALPHABET(c) ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+#define IS_DIGIT(c) (c >= '0' && c <= '9')
+#define IS_ALPHANUMERIC(c) (IS_ALPHABET(c) || IS_DIGIT(c))
+#define IS_SPECIAL(c) (!IS_ALPHANUMERIC(c))
+
+int main() {
+    char ch;
+    printf("Enter a character: ");
+    scanf("%c", &ch);
+    if (IS_ALPHANUMERIC(ch))
+        printf("'%c' is an alphanumeric character.\n", ch);
+    else
+        printf("'%c' is a special character.\n", ch);
+
+    return 0;
+}
+4)  Define  a macro that receives an array and the number of elements in the array as arguments. Write a program using this macro to print out the elements of the array. Try using this macro for different data types of arrays.
+#include <stdio.h>
+#define PRINT_ARRAY(arr, size)         
+    for (int i = 0; i < size; i++) {   
+        printf("%d ", arr[i]);         
+    }                                  
+    printf("\n");
+int main() {
+    int intArr[] = {1, 2, 3, 4, 5};
+    float floatArr[] = {1.1, 2.2, 3.3, 4.4, 5.5};
+
+    int intSize = sizeof(intArr) / sizeof(intArr[0]);
+    int floatSize = sizeof(floatArr) / sizeof(floatArr[0]);
+    printf("Integer Array: ");
+    PRINT_ARRAY(intArr, intSize);
+    printf("Float Array: ");
+    for (int i = 0; i < floatSize; i++) {
+        printf("%.1f ", floatArr[i]);  
+    }
+    printf("\n");
+
+    return 0;
+}
+5) Define a generic function, for different types of array printing , by taking array and array size as arguments.
+
+
+#include <stdio.h>
+void printArray(void *arr, int size, char type) {
+    printf("Array elements: ");
+    
+    for (int i = 0; i < size; i++) {
+        if (type == 'i')  
+            printf("%d ", ((int*)arr)[i]);
+        else if (type == 'f')  
+            printf("%.2f ", ((float*)arr)[i]);
+        else if (type == 'c')  
+            printf("%c ", ((char*)arr)[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int intArr[] = {1, 2, 3, 4, 5};
+    float floatArr[] = {1.1, 2.2, 3.3, 4.4, 5.5};
+    char charArr[] = {'A', 'B', 'C', 'D', 'E'};
+
+    int intSize = sizeof(intArr) / sizeof(intArr[0]);
+    int floatSize = sizeof(floatArr) / sizeof(floatArr[0]);
+    int charSize = sizeof(charArr) / sizeof(charArr[0]);
+    printArray(intArr, intSize, 'i');
+    printArray(floatArr, floatSize, 'f');
+    printArray(charArr, charSize, 'c');
+
+    return 0;
+}
+6)  define a macro to generate swapping function for int, float , double and character datatypes, as a generic function using macros.
+#include <stdio.h>
+#define SWAP(a, b, type)  \
+    {                     \
+        type temp = a;     \
+        a = b;            \
+        b = temp;         \
+    }
+int main() {
+    int a = 5, b = 10;
+    float x = 1.5, y = 3.5;
+    char c1 = 'A', c2 = 'Z';
+    SWAP(a, b, int);
+    printf("Swapped int: a = %d, b = %d\n", a, b);
+    SWAP(x, y, float);
+    printf("Swapped float: x = %.2f, y = %.2f\n", x, y);
+    SWAP(c1, c2, char);
+    printf("Swapped char: c1 = %c, c2 = %c\n", c1, c2);
+
+    return 0;
+}
