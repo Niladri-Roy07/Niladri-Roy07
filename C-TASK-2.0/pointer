@@ -93,4 +93,162 @@ int main() {
 
     return 0;
 }
+6 declare different pointers with different data types. Print the sizes of the pointer variables using sizeof operator. Why do u think all of them are giving same size irrespective of the data type ?
+#include <stdio.h>
+int main() {
+    int *intPtr;
+    float *floatPtr;
+    double *doublePtr;
+    char *charPtr;
+    printf("Size of int pointer: %lu bytes\n", sizeof(intPtr));
+    printf("Size of float pointer: %lu bytes\n", sizeof(floatPtr));
+    printf("Size of double pointer: %lu bytes\n", sizeof(doublePtr));
+    printf("Size of char pointer: %lu bytes\n", sizeof(charPtr));
+    printf("\nAll pointers have the same size because they store memory addresses, and the size of a pointer depends on the system architecture (e.g., 4 bytes on a 32-bit system, 8 bytes on a 64-bit system), not on the type of data they point to.\n");
+
+    return 0;
+}
+7 Write a program to find the biggest of three numbers using pointers that point to those numbers.
+#include <stdio.h>
+int main() {
+    int a, b, c;
+    int *ptr1 = &a, *ptr2 = &b, *ptr3 = &c;
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", ptr1, ptr2, ptr3);
+    int *biggest = ptr1;
+    if (*ptr2 > *biggest) {
+        biggest = ptr2;
+    }
+    if (*ptr3 > *biggest) {
+        biggest = ptr3;
+    }
+    printf("The biggest number is: %d\n", *biggest);
+
+    return 0;
+}
+8 Take three input integers x,y and z. Write a program to rotate their values such that, x has the value of y, y has the value of z and z has the value of x. Do this using pointers that point to x,y and z.
+#include <stdio.h>
+int main() {
+    int x, y, z, temp;
+    int *ptrX = &x, *ptrY = &y, *ptrZ = &z;
+    printf("Enter three numbers (x, y, z): ");
+    scanf("%d %d %d", ptrX, ptrY, ptrZ);
+    temp = *ptrX;
+    *ptrX = *ptrY;
+    *ptrY = *ptrZ;
+    *ptrZ = temp;
+    printf("After rotation: x = %d, y = %d, z = %d\n", *ptrX, *ptrY, *ptrZ);
+
+    return 0;
+}
+9 Declare an integer array of size 10 and initialize it to some values. Print the addresses of each element of the array using a pointer. using indirection operator , print the value stored in each element of the array.
+
+#include <stdio.h>
+int main() {
+    int arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int *ptr = arr; 
+    printf("Addresses and values of array elements:\n");
+    for (int i = 0; i < 10; i++) {
+        printf("Address of arr[%d]: %p, Value: %d\n", i, (ptr + i), *(ptr + i));
+    }
+
+    return 0;
+}
+Call By value & Call by References
+1) Write a program to swap two numbers using Call by Value and Call by Reference.
+#include <stdio.h>
+void swapByValue(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+    printf("Inside swapByValue: a = %d, b = %d\n", a, b);
+}
+void swapByReference(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x, y;
+    printf("Enter two numbers: ");
+    scanf("%d %d", &x, &y);
+    printf("\nBefore swapByValue: x = %d, y = %d\n", x, y);
+    swapByValue(x, y);
+    printf("After swapByValue: x = %d, y = %d (No change)\n", x, y);
+    printf("\nBefore swapByReference: x = %d, y = %d\n", x, y);
+    swapByReference(&x, &y);
+    printf("After swapByReference: x = %d, y = %d\n", x, y);
+
+    return 0;
+}
+3) Write a function that can rotate the values of three variables. print the results in the main function.
+#include <stdio.h>
+void rotateValues(int *a, int *b, int *c) {
+    int temp = *a;
+    *a = *b;
+    *b = *c;
+    *c = temp;
+}
+int main() {
+    int x, y, z;
+    printf("Enter three numbers: ");
+    scanf("%d %d %d", &x, &y, &z);
+    printf("Before rotation: x = %d, y = %d, z = %d\n", x, y, z);
+    rotateValues(&x, &y, &z);
+    printf("After rotation: x = %d, y = %d, z = %d\n", x, y, z);
+    
+    return 0;
+}
+4) Write a function that can take two integers as input, and gives 5 outputs : addition, subtraction, multiplication, quotient and reminder of those two numbers. Print the outputs in the main function.
+#include <stdio.h>
+void calculate(int a, int b, int *sum, int *diff, int *product, int *quotient, int *remainder) {
+    *sum = a + b;
+    *diff = a - b;
+    *product = a * b;
+    *quotient = (b != 0) ? (a / b) : 0;  
+    *remainder = (b != 0) ? (a % b) : 0;
+}
+int main() {
+    int x, y;
+    int sum, diff, product, quotient, remainder;
+    
+    printf("Enter two numbers: ");
+    scanf("%d %d", &x, &y);
+    calculate(x, y, &sum, &diff, &product, &quotient, &remainder);
+    printf("Addition: %d\n", sum);
+    printf("Subtraction: %d\n", diff);
+    printf("Multiplication: %d\n", product);
+    printf("Quotient: %d\n", quotient);
+    printf("Remainder: %d\n", remainder);
+    
+    return 0;
+}
+5) "Write a function that communicates with main using a single static variable without taking any input arguments.
+#include <stdio.h>
+int counterFunction() {
+    static int counter = 0; 
+    counter++;
+    return counter;
+}
+
+int main() {
+    printf("Call 1: Counter = %d\n", counterFunction());
+    printf("Call 2: Counter = %d\n", counterFunction());
+    printf("Call 3: Counter = %d\n", counterFunction());
+    return 0;
+}
+6) Write two source files, main.c and swap.c. The main function initializes a two-element array of ints, and then calls the swap function to swap the pair.
+#include <stdio.h>
+void swap(int *a, int *b);
+int main() {
+    int arr[2] = {10, 20};
+    printf("Before swap: arr[0] = %d, arr[1] = %d\n", arr[0], arr[1]);
+    swap(&arr[0], &arr[1]);
+    printf("After swap: arr[0] = %d, arr[1] = %d\n", arr[0], arr[1]);
+    return 0;
+}
+
+
+
 
