@@ -1,0 +1,50 @@
+1) Write down a macro to find out the biggest of two numbers.
+MAX(x,y) should define code to find biggest of x and y. Implement array sorting function using this macro (Bubble sort)
+#include <stdio.h>
+#define MAX(x, y) ((x) > (y) ? (x) : (y))
+void bubbleSort(int arr[], int n) {
+    int i, j, temp;
+
+    for (i = 0; i < n - 1; i++) {
+        for (j = 0; j < n - i - 1; j++) {
+            // Use MAX to decide whether to swap
+            if (MAX(arr[j], arr[j + 1]) == arr[j + 1]) {
+                // Swap elements
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+int main() {
+    int arr[] = {5, 2, 9, 1, 7};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Original array:\n");
+    printArray(arr, n);
+
+    bubbleSort(arr, n);
+
+    printf("Sorted array (descending):\n");
+    printArray(arr, n);
+
+    return 0;
+}
+2)  Write down a macro to find the biggest of four numbers using biggest of 2 macro.
+#include <stdio.h>
+#define MAX(x, y) ((x) > (y) ? (x) : (y))
+#define MAX4(a, b, c, d) (MAX(MAX(a, b), MAX(c, d)))
+
+int main() {
+    int a = 10, b = 25, c = 17, d = 8;
+    int biggest = MAX4(a, b, c, d);
+    printf("The biggest of %d, %d, %d, and %d is: %d\n", a, b, c, d, biggest);
+    return 0;
+}
+3)  WAP to print if  a character is alphanumeric or special character, using macro conditions
