@@ -1,0 +1,194 @@
+1. Write a program to Set, clear and toggle a particular bit using bit wise operator?
+#include <stdio.h>
+int main() {
+    unsigned int num, pos;
+    int choice;
+    printf("Enter a number: ");
+    scanf("%u", &num);
+    printf("Enter bit position to modify (0-31): ");
+    scanf("%u", &pos);
+    printf("Choose an operation:\n");
+    printf("1. Set bit\n");
+    printf("2. Clear bit\n");
+    printf("3. Toggle bit\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+    switch (choice) {
+        case 1: 
+            num = num | (1 << pos);
+            printf("After setting bit %u: %u\n", pos, num);
+            break;
+        case 2: 
+            num = num & (~(1 << pos));
+            printf("After clearing bit %u: %u\n", pos, num);
+            break;
+        case 3: 
+            num = num ^ (1 << pos);
+            printf("After toggling bit %u: %u\n", pos, num);
+            break;
+        default:
+            printf("Invalid choice.\n");
+    }
+    
+    return 0;
+}
+2. WAP whether a number is ODD or EVEN using bitwise.
+#include <stdio.h>
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    if (num & 1) {
+        printf("%d is ODD.\n", num);
+    } else {
+        printf("%d is EVEN.\n", num);
+    }
+    
+    return 0;
+}
+3. Write a printbinary(int , int ) function consists of 2 integer variables. First one is the value of the variable and the second one is the size of the variable. 
+Example: 
+char x=5; 
+printbinary(x,sizeof(x)); 
+output:  00000101
+#include <stdio.h>
+void printbinary(int value, int size) {
+    int totalBits = size * 8; 
+    for (int i = totalBits - 1; i >= 0; i--) {
+        int bit = (value >> i) & 1;
+        printf("%d", bit);
+    }
+    printf("\n");
+}
+
+int main() {
+    char x = 5;
+    printbinary(x, sizeof(x));  
+    
+    return 0;
+}
+4. WAP to count the bits set (bit value 1 ) in an integer? Find out and compare different possibilities?
+By using loop-
+#include <stdio.h>
+int countSetBitsSimple(int num) {
+    int count = 0;
+    while (num) {
+        if (num & 1) { 
+            count++;
+        }
+        num = num >> 1; 
+    }
+    return count;
+}
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    printf("Set bits (Simple Method): %d\n", countSetBitsSimple(num));
+    return 0;
+}
+__builtin_popcount 
+#include<stdio.h>
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    
+    printf("Set bits (GCC builtin): %d\n", __builtin_popcount(num));
+    
+    return 0;
+}           (faster procees)
+5. WAP whether a number is a power of 2 or not?
+#include <stdio.h>
+int main() {
+    int num, i;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    int power = 1;
+    for (i = 0; power <= num; i++) {
+        if (power == num) {
+            printf("%d is a power of 2.\n", num);
+            return 0;
+        }
+        power = power * 2;
+    }
+    printf("%d is NOT a power of 2.\n", num);
+    return 0;
+}
+6. WAP implements subtraction functionality without using SUB('-') Operator. 
+#include <stdio.h>
+#define v -
+int main() {
+    int a, b, result;
+    printf("Enter two numbers:\n");
+    scanf("%d %d", &a, &b);
+    result = a v b; 
+    printf("Result: %d\n", result);
+    return 0;
+}
+
+
+7. WAP implements addition functionality without using ADD('+') Operator.   
+#include <stdio.h>
+#define v +
+int main() {
+    int a, b, result;
+    printf("Enter two numbers:\n");
+    scanf("%d %d", &a, &b);
+    result = a v b; 
+    printf("Result: %d\n", result);
+    return 0;
+}
+
+
+8. WAP implements XOR functionality without using XOR(^) operator.
+#include <stdio.h>
+int XOR(int a, int b) {
+    return (a & ~b) | (~a & b);
+}
+int main() {
+    int num1, num2, result;
+    printf("Enter two numbers:\n");
+    scanf("%d %d", &num1, &num2);
+    result = XOR(num1, num2);
+    printf("Result: %d\n", result);
+    return 0;
+}
+9. WAP to implement the sizeof operation using the bitwise operator.  
+#include <stdio.h>
+int my_sizeof_int() {
+    unsigned int num = 1;
+    unsigned int count = 0;
+    while (num != 0) {
+        num = num << 8; 
+        count++;
+    }
+    return count;
+}
+int main() {
+    printf("Size of int: %d bytes\n", my_sizeof_int());
+    return 0;
+}
+10. WAP to convert Little endian integer to Big endian integer
+#include <stdio.h>
+int convert_endian(int num) {
+    int byte0, byte1, byte2, byte3;
+    byte0 = (num & 0x000000FF) >> 0;   
+    byte1 = (num & 0x0000FF00) >> 8;   
+    byte2 = (num & 0x00FF0000) >> 16;  
+    byte3 = (num & 0xFF000000) >> 24;  
+    int result = (byte0 << 24) | (byte1 << 16) | (byte2 << 8) | (byte3 << 0);
+    return result;
+}
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    int converted = convert_endian(num);
+    printf("Converted number: %u\n", converted); 
+    return 0;
+}
+11. WAP multiply a number by 9 using bit shift.
+
+
+
