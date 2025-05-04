@@ -189,6 +189,16 @@ int main() {
     return 0;
 }
 11. WAP multiply a number by 9 using bit shift.
+#include <stdio.h>
+int main() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    int result = (num << 3) + num; 
+    printf("Result: %d\n", result);
+    return 0;
+}
+
 
 
 
