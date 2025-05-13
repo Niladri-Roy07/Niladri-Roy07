@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\begin{document}
+\begin{center}
+\large\textbf{GATE 2011 Physics (PH)}
+\end{center}
+The following Boolean expression
+\begin{align}
+Y = A \bullet \overline{B} \bullet \overline{C} \bullet \overline{D} + \overline{A} \bullet B \bullet \overline{C} \bullet D + \overline{A} \bullet \overline{B} \bullet C \bullet D + \overline{A} \bullet B \bullet C \bullet D + \overline{A} \bullet B \bullet C \bullet \overline{D} + A \bullet \overline{B} \bullet \overline{C} \bullet D
+\end{align}
+can be simplified to
+\begin{enumerate}[label=(\Alph*)]
+  \item $\overline{A} \bullet \overline{B} \bullet C + A \bullet \overline{D}$
+  \item $\overline{A} \bullet B \bullet \overline{C} + A \bullet \overline{D}$
+  \item $A \bullet \overline{B} \bullet \overline{C} + \overline{A} \bullet D$
+  \item $A \bullet \overline{B} \bullet C + \overline{A} \bullet D$
+\end{enumerate}
+\vspace{1cm}
+\textbf{Answer:} (D) $A \bullet \overline{B} \bullet C + \overline{A} \bullet D$
+\end{document}
