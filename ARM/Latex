@@ -1,0 +1,132 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usepackage[american, siunitx]{circuitikz}
+\usetikzlibrary{shapes.gates.logic.US}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{center}
+\large\textbf{GATE Electrical Engineering (EE)}
+\end{center}
+
+\noindent Given that the function $F = XY + YZ$
+
+\noindent \textbf{Q.53} Which of the following circuits is a realization of the above function $F$ ?
+
+\begin{enumerate}[label=(\Alph*)]
+  \item 
+  \begin{tikzpicture}[scale=0.8]
+    % NAND gate for X input
+    \node[nand gate US, draw, logic gate inputs=nn] (nand1) at (0,2) {};
+    \draw (nand1.input 1) -- ++(-0.5,0) node[left] {$X$};
+    
+    % OR gate in middle
+    \node[or gate US, draw, logic gate inputs=nn] (or1) at (2,2) {};
+    \draw (nand1.output) -- (or1.input 1);
+    
+    % AND gate for Y and Z
+    \node[and gate US, draw, logic gate inputs=nn] (and1) at (2,0) {};
+    \draw (and1.input 1) -- ++(-0.5,0) node[left] {$Y$};
+    \draw (and1.input 2) -- ++(-0.5,0) node[left] {$Z$};
+    
+    % OR gate output
+    \node[or gate US, draw, logic gate inputs=nn] (or2) at (4,1) {};
+    \draw (or1.output) -- ($(or1.output) + (0.3,0)$) |- (or2.input 1);
+    \draw (and1.output) -- ($(and1.output) + (0.3,0)$) |- (or2.input 2);
+    
+    % Output F
+    \draw (or2.output) -- ++(0.5,0) node[right] {$F$};
+  \end{tikzpicture}
+
+  \item 
+  \begin{tikzpicture}[scale=0.8]
+    % NOT gate for X
+    \node[not gate US, draw] (not1) at (1,2) {};
+    \draw (not1.input) -- ++(-0.5,0) node[left] {$X$};
+    
+    % AND gate top
+    \node[and gate US, draw, logic gate inputs=nn] (and1) at (3,2) {};
+    \draw (not1.output) -- (and1.input 1);
+    
+    % AND gate bottom
+    \node[and gate US, draw, logic gate inputs=nn] (and2) at (3,0) {};
+    \draw (and2.input 1) -- ++(-0.5,0) node[left] {$Y$};
+    \draw (and2.input 2) -- ++(-0.5,0) node[left] {$Z$};
+    
+    % OR gate output
+    \node[or gate US, draw, logic gate inputs=nn] (or1) at (5,1) {};
+    \draw (and1.output) -- ($(and1.output) + (0.3,0)$) |- (or1.input 1);
+    \draw (and2.output) -- ($(and2.output) + (0.3,0)$) |- (or1.input 2);
+    
+    % Output F
+    \draw (or1.output) -- ++(0.5,0) node[right] {$F$};
+  \end{tikzpicture}
+
+  \item 
+  \begin{tikzpicture}[scale=0.8]
+    % NAND gate for X input
+    \node[nand gate US, draw, logic gate inputs=nn] (nand1) at (0,2) {};
+    \draw (nand1.input 1) -- ++(-0.5,0) node[left] {$X$};
+    
+    % OR gate in middle
+    \node[or gate US, draw, logic gate inputs=nn] (or1) at (2,2) {};
+    \draw (nand1.output) -- (or1.input 1);
+    
+    % AND gate and NOT for Y and Z
+    \node[and gate US, draw, logic gate inputs=nn] (and1) at (2,0) {};
+    \node[not gate US, draw] (not1) at (3.5,0) {};
+    \draw (and1.input 1) -- ++(-0.5,0) node[left] {$Y$};
+    \draw (and1.input 2) -- ++(-0.5,0) node[left] {$Z$};
+    \draw (and1.output) -- (not1.input);
+    
+    % OR gate output
+    \node[or gate US, draw, logic gate inputs=nn] (or2) at (5,1) {};
+    \draw (or1.output) -- ($(or1.output) + (0.3,0)$) |- (or2.input 1);
+    \draw (not1.output) -- ($(not1.output) + (0.3,0)$) |- (or2.input 2);
+    
+    % Output F
+    \draw (or2.output) -- ++(0.5,0) node[right] {$F$};
+  \end{tikzpicture}
+
+  \item 
+  \begin{tikzpicture}[scale=0.8]
+    % NAND gate for X input
+    \node[nand gate US, draw, logic gate inputs=nn] (nand1) at (0,3) {};
+    \draw (nand1.input 1) -- ++(-0.5,0) node[left] {$X$};
+    
+    % NAND gate for Y with inverter
+    \node[nand gate US, draw, logic gate inputs=nn] (nand2) at (0,1) {};
+    \node[not gate US, draw] (not1) at (1.5,1) {};
+    \draw (nand2.input 1) -- ++(-0.5,0) node[left] {$Y$};
+    \draw (nand2.output) -- (not1.input);
+    
+    % Middle OR gate
+    \node[or gate US, draw, logic gate inputs=nn] (or1) at (3,2) {};
+    \draw (nand1.output) -- ($(nand1.output) + (0.3,0)$) |- (or1.input 1);
+    \draw (not1.output) -- ($(not1.output) + (0.3,0)$) |- (or1.input 2);
+    
+    % AND gate for Z
+    \node[and gate US, draw, logic gate inputs=nn] (and1) at (3,0) {};
+    \draw (and1.input 2) -- ++(-0.5,0) node[left] {$Z$};
+    
+    % Wire connecting Y to Z AND gate
+    \draw (nand2.input 1) -- ++(-0.2,0) -- ++(0,-1) -| (and1.input 1);
+    
+    % OR gate output
+    \node[or gate US, draw, logic gate inputs=nn] (or2) at (5,1) {};
+    \draw (or1.output) -- ($(or1.output) + (0.3,0)$) |- (or2.input 1);
+    \draw (and1.output) -- ($(and1.output) + (0.3,0)$) |- (or2.input 2);
+    
+    % Output F
+    \draw (or2.output) -- ++(0.5,0) node[right] {$F$};
+  \end{tikzpicture}
+\end{enumerate}
+
+\vspace{0.5cm}
+\noindent \textbf{Answer:} The circuit that realizes the function $F = XY + YZ$ is option (B).
+
+\end{document}
