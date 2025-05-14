@@ -1,0 +1,163 @@
+#include <avr/io.h>
+#include <util/delay.h>
+#include <stdio.h>
+#define F_CPU 16000000UL  
+#define BAUD 9600
+#define UBRR_VALUE ((F_CPU / 16 / BAUD) - 1)
+void uart_init(void) {
+    UBRR0H = (uint8_t)(UBRR_VALUE >> 8);
+    UBRR0L = (uint8_t)UBRR_VALUE;
+    UCSR0B = (1 << TXEN0) | (1 << RXEN0);
+    UCSR0C = (1 << UCSZ01) | (1 << UCSZ00);
+}
+void uart_transmit(char data) {
+  while (!(UCSR0A & (1 << UDRE0)));
+    UDR0 = data;
+}
+void uart_puts(const char* str) {
+    while (*str) {
+        uart_transmit(*str++);
+    }
+}
+static int uart_putchar(char c, FILE *stream) {
+    if (c == '\n') {
+        uart_putchar('\r', stream);
+    }
+    uart_transmit(c);
+    return 0;
+}
+static FILE uart_output = FDEV_SETUP_STREAM(uart_putchar, NULL, _FDEV_SETUP_WRITE);
+uint8_t calculate_function(uint8_t x, uint8_t y, uint8_t z) {
+    return ((!x && !y) || (!y && z)) ? 1 : 0;
+}
+void verify_against_kmap() {
+    uint8_t expected[2][2][2] = {
+        { // x = 0
+            {1, 1},  // y = 0, z = 0,1
+            {0, 1}   // y = 1, z = 0,1
+        },
+        { // x = 1
+            {0, 0},  // y = 0, z = 0,1
+            {0, 1}   // y = 1, z = 0,1
+        }
+    };
+    
+    printf("Verifying function against Karnaugh map:\n");
+    printf("X Y Z | F | Expected\n");
+    printf("-------------------\n");
+    
+    uint8_t all_correct = 1;
+    
+    for (uint8_t x = 0; x < 2; x++) {
+        for (uint8_t y = 0; y < 2; y++) {
+            for (uint8_t z = 0; z < 2; z++) {
+                uint8_t result = calculate_function(x, y, z);
+                uint8_t expected_result = expected[x][y][z];
+                
+                printf("%d %d %d | %d | %d", x, y, z, result, expected_result);
+                
+                if (result == expected_result) {
+                    printf(" ✓\n");
+                } else {
+                    printf(" X\n");
+                    all_correct = 0;
+                }
+            }
+        }
+    }
+    
+    if (all_correct) {
+        printf("\nAll outputs match the Karnaugh map!\n");
+        printf("The minimized function is F = X-Y- + Y-Z (option C)\n");
+    } else {
+        printf("\nError: Function does not match the Karnaugh map!\n");
+    }
+}
+
+// Function to test all options from the multiple choice
+void test_all_options() {
+    printf("\nTesting all options:\n");
+    
+    // Define functions for each option
+    // Expected outputs from the Karnaugh map
+    uint8_t expected[2][2][2] = {
+        { // x = 0
+            {1, 1},  // y = 0, z = 0,1
+            {0, 1}   // y = 1, z = 0,1
+        },
+        { // x = 1
+            {0, 0},  // y = 0, z = 0,1
+            {0, 1}   // y = 1, z = 0,1
+        }
+    };
+    
+    // Test each option
+    uint8_t correct_count[4] = {0, 0, 0, 0};
+    char option_names[4] = {'A', 'B', 'C', 'D'};
+    
+    // For each x, y, z combination
+    for (uint8_t x = 0; x < 2; x++) {
+        for (uint8_t y = 0; y < 2; y++) {
+            for (uint8_t z = 0; z < 2; z++) {
+                uint8_t expected_result = expected[x][y][z];
+                
+                // Option A: F = X̄Y + YZ
+                uint8_t result_a = ((!x && y) || (y && z)) ? 1 : 0;
+                if (result_a == expected_result) correct_count[0]++;
+                
+                // Option B: F = XȲ + YZ
+                uint8_t result_b = ((x && !y) || (y && z)) ? 1 : 0;
+                if (result_b == expected_result) correct_count[1]++;
+                
+                // Option C: F = X̄Ȳ + ȲZ
+                uint8_t result_c = ((!x && !y) || (!y && z)) ? 1 : 0;
+                if (result_c == expected_result) correct_count[2]++;
+                
+                // Option D: F = XȲ + ȲZ
+                uint8_t result_d = ((x && !y) || (!y && z)) ? 1 : 0;
+                if (result_d == expected_result) correct_count[3]++;
+            }
+        }
+    }
+    
+    // Display results
+    for (uint8_t i = 0; i < 4; i++) {
+        printf("Option %c: %d/8 correct\n", option_names[i], correct_count[i]);
+        if (correct_count[i] == 8) {
+            printf("Option %c is the correct answer!\n", option_names[i]);
+        }
+    }
+}
+
+int main(void) {
+    // Initialize UART for communication
+    uart_init();
+    
+    // Redirect stdout to UART for printf
+    stdout = &uart_output;
+    
+    // Print header
+    printf("\n\nGATE Question Q.52 - Karnaugh Map Minimization\n");
+    printf("=============================================\n\n");
+    
+    // Print the Karnaugh map
+    printf("Karnaugh map:\n");
+    printf("    YZ\n");
+    printf("    00  01  11  10\n");
+    printf("X 0  1   1   1   0\n");
+    printf("  1  0   0   1   0\n\n");
+    
+    // Verify the function against the Karnaugh map
+    verify_against_kmap();
+    
+    // Test all options
+    test_all_options();
+    
+    // Main program loop
+    while (1) {
+        // The program simply displays results and then loops indefinitely
+        _delay_ms(1000);
+    }
+    
+    return 0;  // Never reached
+}
