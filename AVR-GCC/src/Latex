@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\geometry{margin=1in}
+
+\title{GATE-EE 2011 \\ Digital Logic Question}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Q.52}
+
+The following Karnaugh map represents a function $F$:
+
+\begin{center}
+\begin{tikzpicture}
+    % Draw grid
+    \draw (0,0) grid (4,2);
+
+    % Labels for columns
+    \node at (0.5,2.3) {00};
+    \node at (1.5,2.3) {01};
+    \node at (2.5,2.3) {11};
+    \node at (3.5,2.3) {10};
+
+    % Label for YZ
+    \node at (2,2.7) {$YZ$};
+
+    % Label for X
+    \node at (-0.4,1.5) {$0$};
+    \node at (-0.4,0.5) {$1$};
+    \node[rotate=90] at (-1.1,1) {$X$};
+
+    % Fill in values
+    \node at (0.5,1.5) {1};
+    \node at (1.5,1.5) {1};
+    \node at (2.5,1.5) {1};
+    \node at (3.5,1.5) {0};
+    \node at (0.5,0.5) {0};
+    \node at (1.5,0.5) {0};
+    \node at (2.5,0.5) {1};
+    \node at (3.5,0.5) {0};
+
+    % Label for function
+    \node at (4.5,1.5) {$F$};
+
+\end{tikzpicture}
+\end{center}
+
+A minimized form of the function $F$ is:
+
+\begin{multicols}{2}
+\begin{enumerate}
+    \item[(A)] $\overline{X}Y + YZ$
+    \item[(B)] $\overline{X}\,\overline{Y} + YZ$
+    \item[(C)] $\overline{X}\,\overline{Y} + \overline{Y}Z$
+    \item[(D)] $\overline{X}\,\overline{Y} + \overline{Y}\,\overline{Z}$
+\end{enumerate}
+\end{multicols}
+
+\vspace{1em}
+
+\begin{tcolorbox}[colback=green!10!white, colframe=green!50!black, title=Correct Answer]
+\textbf{Option (B)}: $\boxed{F = \overline{X}\,\overline{Y} + YZ}$
+\end{tcolorbox}
+
+\end{document}
