@@ -1,0 +1,34 @@
+#include <Arduino.h>
+
+bool logic_output(bool A, bool B, bool C) {
+    bool and_out = A && B;
+    bool or_out = A || B;
+    bool not_out = !or_out;
+    bool F = and_out || not_out || C;
+    return F;
+}
+
+void setup() {
+    Serial.begin(9600);
+
+    // Test all input combinations
+    for (int a = 0; a <= 1; a++) {
+        for (int b = 0; b <= 1; b++) {
+            for (int c = 0; c <= 1; c++) {
+                bool F = logic_output(a, b, c);
+                Serial.print("A=");
+                Serial.print(a);
+                Serial.print(" B=");
+                Serial.print(b);
+                Serial.print(" C=");
+                Serial.print(c);
+                Serial.print(" => F=");
+                Serial.println(F);
+            }
+        }
+    }
+}
+
+void loop() {
+    // Do nothing
+}
