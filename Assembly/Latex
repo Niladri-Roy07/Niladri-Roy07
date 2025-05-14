@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{circuitikz}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+\geometry{margin=1in}
+
+\title{GATE-EE 2011 \\ Digital Logic Question}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Q.6}
+
+\noindent
+When the output $Y$ in the circuit below is “1”, it implies that data has:
+
+\vspace{1em}
+
+\begin{center}
+\begin{circuitikz}[american]
+    % First D flip-flop
+    \draw (0,0) node[anchor=east] {Clock} to[short, -*] (0.5,0)
+          (0.5,0) -- (1.5,0) node[flipflop D, name=FF1] {}
+          (FF1.D) -- ++(-1,0) node[anchor=east] {Data};
+
+    % Connections from FF1
+    \draw (FF1.Q) -- ++(1.5,0) node[flipflop D, name=FF2] {};
+
+    % Connect Clock to FF2
+    \draw (0.5,0) -- (FF2.clock);
+
+    % Draw inverter bubbles
+    \draw (FF1.notQ) ++(0,-0.3) node[anchor=north] {};
+    \draw (FF2.notQ) ++(0,-0.3) node[anchor=north] {};
+
+    % AND gate
+    \draw (FF1.Q) ++(2,0) |- ++(0.5,-1.5) coordinate (Ain);
+    \draw (FF2.notQ) -- ++(0.5,0) |- (Ain);
+    \draw (Ain) ++(0,0) node[and port, anchor=in 1, rotate=270] (myand) {};
+    \draw (myand.out) -- ++(0,0.5) node[anchor=west] {$Y$};
+
+\end{circuitikz}
+\end{center}
+
+\begin{multicols}{2}
+\begin{enumerate}
+    \item[(A)] changed from “0” to “1”
+    \item[(B)] changed from “1” to “0”
+    \item[(C)] changed in either direction
+    \item[(D)] not changed
+\end{enumerate}
+\end{multicols}
+
+\vspace{1em}
+
+\begin{tcolorbox}[colback=green!10!white, colframe=green!50!black, title=Correct Answer]
+\textbf{Option (C)}: $\boxed{\text{changed in either direction}}$
+\end{tcolorbox}
+
+\end{document}
