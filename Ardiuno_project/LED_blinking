@@ -1,0 +1,56 @@
+#define LED_RED 10    // Connect red LED to pin 10
+#define LED_GREEN 11  // Connect green LED to pin 11
+#define LED_Yellow 12   // Connect blue LED to pin 12
+
+void setup() {
+  // Initialize serial communication
+  Serial.begin(9600);
+  Serial.println("LED Test Program");
+  
+  // Configure LED pins as outputs
+  pinMode(LED_RED, OUTPUT);
+  pinMode(LED_GREEN, OUTPUT);
+  pinMode(LED_Yellow, OUTPUT);
+  
+  // Initially turn off all LEDs
+  digitalWrite(LED_RED, LOW);
+  digitalWrite(LED_GREEN, LOW);
+  digitalWrite(LED_Yellow, LOW);
+}
+
+void loop() {
+  // Test red LED
+  Serial.println("Testing Red LED");
+  digitalWrite(LED_RED, HIGH);    // Turn on red LED
+  digitalWrite(LED_GREEN, LOW);   // Make sure green is off
+  digitalWrite(LED_Yellow, LOW);    // Make sure blue is off
+  delay(2000);                    // Keep on for 2 seconds
+  
+  // Test green LED
+  Serial.println("Testing Green LED");
+  digitalWrite(LED_RED, LOW);     // Make sure red is off
+  digitalWrite(LED_GREEN, HIGH);  // Turn on green LED
+  digitalWrite(LED_Yellow, LOW);    // Make sure blue is off
+  delay(2000);                    // Keep on for 2 seconds
+  
+  // Test blue LED
+  Serial.println("Testing Blue LED");
+  digitalWrite(LED_RED, LOW);     // Make sure red is off
+  digitalWrite(LED_GREEN, LOW);   // Make sure green is off 
+  digitalWrite(LED_Yellow, HIGH);   // Turn on blue LED
+  delay(2000);                    // Keep on for 2 seconds
+  
+  // Test all LEDs on
+  Serial.println("All LEDs ON");
+  digitalWrite(LED_RED, HIGH);
+  digitalWrite(LED_GREEN, HIGH);
+  digitalWrite(LED_Yellow, HIGH);
+  delay(2000);
+  
+  // All LEDs off
+  Serial.println("All LEDs OFF");
+  digitalWrite(LED_RED, LOW);
+  digitalWrite(LED_GREEN, LOW);
+  digitalWrite(LED_Yellow, LOW);
+  delay(1000);
+}
