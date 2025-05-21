@@ -1,4 +1,4 @@
-using while ,do while and for loops :
+1.Using while ,do while and for loops :
 *
 * *
 * * *
@@ -18,7 +18,7 @@ int main() {
 
     return 0;
 }
-using while ,do while and for loops :
+2.Using while ,do while and for loops :
 * * * * *
 * * * *
 * * *
@@ -37,6 +37,7 @@ int main() {
 
     return 0;
 }
+3.Using while ,do while and for loops :
 1
 2 2
 3 3 3
@@ -55,6 +56,7 @@ int main() {
 
     return 0;
 }
+4.Using while ,do while and for loops :
 1
 1 2
 1 2 3
@@ -74,6 +76,7 @@ int main() {
 
     return 0;
 }
+5.Using while ,do while and for loops :
 1
 0 1
 1 0 1
@@ -93,6 +96,7 @@ int main() {
 
     return 0;
 }
+6.Using while ,do while and for loops :
 5
 4 4
 3 3 3
@@ -112,6 +116,7 @@ int main() {
 
     return 0;
 }
+7.Using while ,do while and for loops :
 5
 5 4
 5 4 3
@@ -131,7 +136,7 @@ int main() {
 
     return 0;
 }
-
+8.Using while ,do while and for loops :
 1
 2	3
 4	5   6
@@ -152,8 +157,7 @@ int main() {
     return 0;
 }
 
-
-without using nested loops :
+9.Without using nested loops :
 *
 * *
 * * *
@@ -172,9 +176,7 @@ int main() {
 
     return 0;
 }
- Write a program to print all prime numbers between 2 given integers.
-
-
+ 10.Write a program to print all prime numbers between 2 given integers.
 #include <stdio.h>
 int main() {
     int start, end, i, j, isPrime;
@@ -201,7 +203,7 @@ int main() {
 
     return 0;
 }
-Write a function to calculate simple interest. Call it in main function with appropriate inputs and print the total amount the user will get after the tenure (principle + interest)
+11.Write a function to calculate simple interest. Call it in main function with appropriate inputs and print the total amount the user will get after the tenure (principle + interest)
 
 
 #include <stdio.h>
@@ -224,8 +226,7 @@ int main() {
 
     return 0;
 }
- Write a function that takes two numbers, a and n as input arguments and returns the value of a to the power of n.
-
+12. Write a function that takes two numbers, a and n as input arguments and returns the value of a to the power of n.
 
 #include <stdio.h>
 int power(int a, int n) {
@@ -246,7 +247,7 @@ int main() {
 
     return 0;
 }
-Write a function that takes two numbers a and b as input arguments and returns their product as return value , without using * operator.
+13.Write a function that takes two numbers a and b as input arguments and returns their product as return value , without using * operator.
 #include <stdio.h>
 #define v *
 
@@ -262,7 +263,7 @@ int main() {
 
     return 0;
 }
-Write a function that takes two numbers a and b, and returns the remainder after dividing a with b
+14.Write a function that takes two numbers a and b, and returns the remainder after dividing a with b
 #include <stdio.h>
 int getRemainder(int a, int b) {
     return a % b;  
@@ -280,7 +281,7 @@ int main() {
 
     return 0;
 }
- Write a function that takes an integer number as input and prints its multiplication table.return type is  void.
+15. Write a function that takes an integer number as input and prints its multiplication table.return type is  void.
 #include <stdio.h>
 int main() {
     int n;
@@ -292,7 +293,7 @@ int main() {
 
     return 0;
 }
-Write a function to determine if a character is alphanumeric or not and print the appropriate output in main function.
+16.Write a function to determine if a character is alphanumeric or not and print the appropriate output in main function.
 #include <stdio.h>
 #include <ctype.h>  
 int isAlphanumeric(char ch) {
@@ -310,7 +311,7 @@ int main() {
 
     return 0;
 }
-Write a calculator program with 5 functions below to do the operations of addition, subtraction, multiplication, division for quotient and division for remainder.
+17.Write a calculator program with 5 functions below to do the operations of addition, subtraction, multiplication, division for quotient and division for remainder.
 1) int add (int a, int b) // to be called when user chooses +
 2) int sub (int a,int b) // to be called when user chooses -
 3) int mul(int a, int b) // to be called when user chooses *
@@ -349,7 +350,7 @@ int main() {
     return 0;
 }
 
-Write a function to accept a year as input and return 1 if the year is a leap year, otherwise 0
+18.Write a function to accept a year as input and return 1 if the year is a leap year, otherwise 0
 #include <stdio.h>
 int isLeapYear(int year){
     return (year % 4 == 0);
@@ -368,7 +369,7 @@ int main() {
 
     return 0;
 }
-Write a function to accept a month and year as input, and return the number of days in that month as output. print the number of days in main
+19.Write a function to accept a month and year as input, and return the number of days in that month as output. print the number of days in main
 #include <stdio.h>
 int getDaysInMonth(int month, int year) {
     int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -396,7 +397,7 @@ int main() {
 
     return 0;
 }
-Write a function ,that can take two integers, swap their values and print their new values. return type should be void. function should print the values.
+20.Write a function ,that can take two integers, swap their values and print their new values. return type should be void. function should print the values.
 #include <stdio.h>
 void swap(int a, int b) {
     int temp = a;
@@ -414,7 +415,7 @@ int main() {
 
     return 0;
 }
-Write a function that takes 2 dates as inputs, and returns 1 if the first date is old, 2 if the second date is old.
+21.Write a function that takes 2 dates as inputs, and returns 1 if the first date is old, 2 if the second date is old.
 #include <stdio.h>
 int compareDates(int d1, int m1, int y1, int d2, int m2, int y2) {
     if (y1 < y2) return 1;  
@@ -444,7 +445,7 @@ int main() {
     return 0;
 }
 
-Write a  function that takes a date as input, and returns 1 if the date is valid, 0 if the date is invalid.
+22.Write a  function that takes a date as input, and returns 1 if the date is valid, 0 if the date is invalid.
 #include <stdio.h>
 int isLeapYear(int year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
