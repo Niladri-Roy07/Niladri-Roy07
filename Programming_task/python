@@ -1,1 +1,50 @@
+Exercise 1: Calculate the Multiplication and Sum of Two Numbers
+n1 =10;
+n2 =20;
+n3 = n1 + n2;
+n4 = n1 * n2;
+print("The addition of two numbers:",n3);
+print("The multiplication of two numbers:",n4);
+
+Exercise 2: Print the Sum of a Current Number and a Previous Number.
+numbers = [10, 20, 30, 40]  # the input numbers
+prev_index = 0              # index of previous number
+curr_index = 1              # index of current number
+sum = numbers[prev_index] + numbers[curr_index]  # correct way to get the sum
+print("The sum of the numbers:", sum);
+
+Exercise 3: Print Characters Present at an Even Index Number
+text ="Hello World"; # input character
+even_index=text[::2]; #the index of the character
+print("The even index:", even_index);
+
+Exercise 4: Remove First n Characters from a String
+str = "HelloWorld"; #input string
+index=3;  #the index of the string
+remove_index=str[index::];  #the removed index of the string
+print("Remove the index:", remove_index);
+
+Exercise 5: Check if the First and Last Numbers of a List are the Same
+Numbers=[10,20,30,40]; #the input numbers
+n1=0; #the first index
+n3=3; #the second index
+if n1==n3:
+        print("The numbers are same:");
+else:
+    print("The numbers are not same:");
+
+Exercise 6: Display Numbers Divisible by 5
+n = int(input("Enter a number:"));
+if n % 5 == 0:
+    print("The number is divisible by five.");
+else:
+    print("The number is not divisible by five.");
+
+Exercise 7: Find the Number of Occurrences of a Substring in a String
+text = "Python I am doing now and I am enjoying it too";
+substring = "Python";
+
+count = text.count(substring);
+print("The number of occurrences of the substring:", count);
+
 
