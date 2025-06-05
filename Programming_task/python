@@ -43,8 +43,105 @@ else:
 Exercise 7: Find the Number of Occurrences of a Substring in a String
 text = "Python I am doing now and I am enjoying it too";
 substring = "Python";
-
 count = text.count(substring);
 print("The number of occurrences of the substring:", count);
+
+1. Write a program to print “Hello, World!” on the screen.
+var = "Hello world";
+print(var);
+
+
+2. Write a program to add two numbers and display the sum.
+n1= 10;
+n2=20;
+sum=n1+n2;
+print("The sum of two numbers:",sum);
+
+3. Write a program to find the largest of three numbers.
+list={10,40,30};
+print("The largest number is:",max(list));
+
+
+4. Write a program to check whether a given number is even or odd.
+num=int(input("Enter the number:"));
+if num%2==0:
+    print("The number is even:");
+else:
+    print("The number is odd:");
+
+5. Write a program to find the sum of all the numbers in a list.
+numbers = [10, 10, 20];  
+print("The sum of the list:", sum(numbers));
+
+6. Write a program to print the Fibonacci series up to a given number.
+n = int(input("Enter a number: "));
+a, b = 0, 1
+while a <= n:
+    print(a, end=" ");
+    a, b = b, a + b
+
+7. Write a program to convert Celsius to Fahrenheit.
+celsius=int(input("Enter the celsius value:"));
+fahrenheit=(celsius*(9/5)) +32;
+print("The value in fahrenheit:",fahrenheit);
+
+
+8. Write a program to find the factorial of a number.
+import math
+num = int(input("Enter a number: "));
+print("The factorial of the number:", math.factorial(num));
+
+9. Write a program to check whether a given number is prime or not.
+num = int(input("Enter the number: "))
+if num <= 1:
+    print("The number is not prime.")
+else:
+    i = 2
+    is_prime = True
+    while i * i <= num:
+        if num % i == 0:
+            is_prime = False
+            break
+        i += 1
+    if is_prime:
+        print("The number is prime.")
+    else:
+        print("The number is not prime.")
+
+
+11. Write a program to reverse a string.
+str = "Hello"; 
+reverse_str=str[::-1];  
+print("Reverse the string:", reverse_str);
+
+
+
+14. Write a program to find the area of a rectangle.
+l=int(input("Enter the value:"));
+b=int(input("Enter the value:"));
+area=l * b;
+print("The area of reactangle",area);
+
+15. Write a program to find the area of a circle.
+radius=int(input("Enter the value:"));
+area= 3.14 * radius * radius;
+print("the area of the circle:",area);
+
+
+3. Write a program to remove duplicates from a list.
+numbers = [10, 10, 20, 30];
+unique_numbers = list(set(numbers));
+print("Remove duplicate from the list:", unique_numbers);
+
+4. Write a program to find the common elements between two lists.
+n1 = [10, 15, 20, 30];
+n2 = [10, 24, 27, 30];
+unique_numbers = list(set(n1) & set(n2));
+print("Common unique elements:", unique_numbers);
+
+
+
+
+
 
 
