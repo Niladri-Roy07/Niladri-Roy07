@@ -128,6 +128,28 @@ area= 3.14 * radius * radius;
 print("the area of the circle:",area);
 
 
+1. Write a program to find the second largest element in an array.
+a = [10, 20, 30]
+if a[0] > a[1]:
+    l = a[0]
+    s = a[1]
+else:
+    l = a[1]
+    s = a[0]
+for i in range(2, len(a)):
+    if a[i] > l:
+        s = l
+        l = a[i]
+    elif a[i] > s and a[i] != l:
+        s = a[i]
+print("Largest:", l)
+print("Second largest:", s)
+
+2. Write a program to sort a list of elements in ascending order.
+numbers = [32, 15, 20, 5, 60];
+sorted_list = sorted(numbers);
+print("Sorted list:", sorted_list);
+
 3. Write a program to remove duplicates from a list.
 numbers = [10, 10, 20, 30];
 unique_numbers = list(set(numbers));
