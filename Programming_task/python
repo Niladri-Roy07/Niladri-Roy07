@@ -114,6 +114,21 @@ str = "Hello";
 reverse_str=str[::-1];  
 print("Reverse the string:", reverse_str);
 
+12. Write a program to find the sum of the digits of a given number.
+num = input("Enter a number: ")
+sum_digits = 0
+for digit in num:
+    sum_digits += int(digit)
+print("Sum of the digits:", sum_digits)
+
+
+13. Write a program to check whether a given string is a palindrome or not.
+text = input("Enter a string: ")
+if text == text[::-1]:
+    print("The string is a palindrome.")
+else:
+    print("The string is not a palindrome.")
+
 
 
 14. Write a program to find the area of a rectangle.
@@ -160,6 +175,19 @@ n1 = [10, 15, 20, 30];
 n2 = [10, 24, 27, 30];
 unique_numbers = list(set(n1) & set(n2));
 print("Common unique elements:", unique_numbers);
+
+5. Write a program to find the factorial of a number using recursion.
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+num = int(input("Enter a number: "))
+if num < 0:
+    print("Factorial is not defined for negative numbers.")
+else:
+    print("Factorial of", num, "is:", factorial(num))
+
 
 
 
