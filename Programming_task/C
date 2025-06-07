@@ -1,0 +1,116 @@
+Exercise 1: Calculate the Multiplication and Sum of Two Numbers.
+#include<stdio.h>
+int main(){
+    int n1 = 10, n2 = 20;
+    int sum = n1 + n2;
+printf("The sum of the numbers. %d\n",sum);
+return 0;
+}
+
+Exercise 2: Print the Sum of a Current Number and a Previous Number
+#include <stdio.h>
+int main() {
+    int a[] = {10, 20, 30};         
+    int prev_index = a[0];         
+    int curr_index = a[1];
+    int sum = prev_index + curr_index;
+    
+    printf("The sum of the previous and current numbers: %d", sum);
+    return 0;
+}
+
+Exercise 3: Print Characters Present at an Even Index Number
+#include <stdio.h>
+int main() {
+    char str[] = "Hello";
+    for (int i = 0; str[i] != '\0'; i += 2) {
+        printf("%c", str[i]);
+    }
+    return 0;
+}
+
+Exercise 4: Remove First n Characters from a String
+#include <stdio.h>
+int main() {
+    char str[] = "HelloWorld";
+    int n = 5;
+    for (int i = n; str[i] != '\0'; i++) {
+        printf("%c", str[i]);
+    }
+
+    return 0;
+}
+
+Exercise 5: Check if the First and Last Numbers of a List are the Same
+#include <stdio.h>
+int main() {
+    int a[] = {10, 20, 30, 10};
+    if (a[0] == a[3]) {
+        printf("The numbers are same", a[0]);
+    } else {
+        printf("The numbers are not same", a[0], a[3]);
+    }
+
+    return 0;
+}
+
+
+Exercise 6: Display Numbers Divisible by 5
+#include <stdio.h>
+int main() {
+    int numbers[] = {10, 12, 15, 18};
+    for (int i = 0; i < 4; i++) {
+        if (numbers[i] % 5 == 0) {
+            printf("%d is divisible by 5\n", numbers[i]);
+        } else {
+            printf("%d is not divisible by 5\n", numbers[i]);
+        }
+    }
+
+    return 0;
+}
+
+Exercise 7: Find the Number of Occurrences of a Substring in a String
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char str[] = "abababa";
+    char sub[] = "aba";
+    int count = 0;
+    char *p = str;
+    while ((p = strstr(p, sub)) != NULL) {
+        count++;
+        p++;  
+    }
+    printf("Occurrences: %d\n", count);
+    return 0;
+}
+
+
+1. Write a program to print “Hello, World!” on the screen.
+#include<stdio.h>
+int main(){
+    printf("Hello world");
+    return 0;
+}
+
+2. Write a program to add two numbers and display the sum.
+#include <stdio.h>
+int main() {
+    int a, b;
+    
+    printf("Enter the value of a: ");
+    scanf("%d", &a);
+
+    printf("Enter the value of b: ");
+    scanf("%d", &b);
+
+    int sum = a + b;
+    printf("The value of sum: %d\n", sum);
+
+    return 0;
+}
+
+
+3. Write a program to find the largest of three numbers.
+
