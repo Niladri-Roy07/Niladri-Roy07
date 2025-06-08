@@ -188,6 +188,92 @@ if num < 0:
 else:
     print("Factorial of", num, "is:", factorial(num))
 
+7. Write a program to implement binary search.
+def binary_search(arr, target):
+    low = 0
+    high = len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+
+        if arr[mid] == target:
+            return mid  
+        elif arr[mid] < target:
+            low = mid + 1  
+        else:
+            high = mid - 1  
+
+    return -1  
+arr = [8, 12, 17, 31, 32, 35] 
+target = 12
+result = binary_search(arr, target)
+if result != -1:
+    print(f"Element {target} found at index {result}.")
+else:
+    print(f"Element {target} not found in the array.")
+
+
+8. Write a program to implement selection sort.
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_index = i  
+
+        for j in range(i+1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j 
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+arr = [12, 31, 35, 8, 32, 17]
+print("Original array:", arr)
+selection_sort(arr)
+print("Sorted array using Selection Sort:", arr)
+
+
+
+9. Write a program to implement merge sort.
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr  
+    mid = len(arr) // 2
+    left_half = merge_sort(arr[:mid])
+    right_half = merge_sort(arr[mid:])
+    return merge(left_half, right_half)
+def merge(left, right):
+    result = []
+    i = j = 0
+
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+arr = [12, 31, 35, 8, 32, 17]
+print("Original array:", arr)
+sorted_arr = merge_sort(arr)
+print("Sorted array:", sorted_arr)
+
+10. Write a program to implement quick sort.
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr  
+    pivot = arr[0] 
+    left = [x for x in arr[1:] if x < pivot]   
+    right = [x for x in arr[1:] if x >= pivot] 
+    return quick_sort(left) + [pivot] + quick_sort(right)
+arr = [12, 31, 35, 8, 32, 17]
+print("Original array:", arr)
+sorted_arr = quick_sort(arr)
+print("Sorted array using Quick Sort:", sorted_arr)
+
+
+
+
+
+
 
 
 
