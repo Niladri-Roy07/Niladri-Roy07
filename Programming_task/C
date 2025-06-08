@@ -113,4 +113,29 @@ int main() {
 
 
 3. Write a program to find the largest of three numbers.
+#include <stdio.h>
+void main() {
+    int a[] = {10, 20, 30};
+    int n = sizeof(a) / sizeof(a[0]), s, l, i;
+
+    if (a[0] > a[1]) {
+        l = a[0];
+        s = a[1];
+    } else {
+        l = a[1];
+        s = a[0];
+    }
+
+    for (i = 2; i < n; i++) {
+        if (a[i] > l) {
+            s = l;
+            l = a[i];
+        } else if (a[i] > s) {
+            s = a[i];
+        }
+    }
+
+    printf("The highest value is %d and the second highest is %d.\n", l, s);
+}
+
 
