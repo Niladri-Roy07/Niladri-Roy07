@@ -269,6 +269,79 @@ print("Original array:", arr)
 sorted_arr = quick_sort(arr)
 print("Sorted array using Quick Sort:", sorted_arr)
 
+11. Write a program to find the sum of all the prime numbers between two given numbers.
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+def sum_of_primes(start, end):
+    total = 0
+    for num in range(start, end + 1):
+        if is_prime(num):
+            total += num
+    return total
+start = 10
+end = 30
+print(f"Sum of prime numbers between {start} and {end} is:", sum_of_primes(start, end))
+
+
+12. Write a program to find the sum of all the even numbers between two given numbers.
+def sum_of_even_numbers(start, end):
+    total = 0
+    for num in range(start, end + 1):
+        if num % 2 == 0:
+            total += num
+    return total
+start = 10
+end = 20
+print("Sum of even numbers between {start} and {end} is:", sum_of_even_numbers(start, end))
+
+13. Write a program to find the sum of all the odd numbers between two given numbers.
+def sum_of_odd_numbers(start, end):
+    total = 0
+    for num in range(start, end + 1):
+        if num % 2 == 1:
+            total += num
+    return total
+start = 1
+end = 10
+print("Sum of odd numbers between {start} and {end} is:", sum_of_odd_numbers(start, end))
+
+14. Write a program to find the square root of a number using the Newton-Raphson method.
+def newton_sqrt(number, tolerance=1e-10):
+    if number < 0:
+        return "Square root not defined for negative numbers"
+    
+    guess = number / 2.0  
+
+    while abs(guess * guess - number) > tolerance:
+        guess = (guess + number / guess) / 2.0  
+
+    return guess
+num = 25
+result = newton_sqrt(num)
+print(f"Square root of {num} is approximately: {result}")
+
+15. Write a program to find the power of a number using recursion.
+def power(base, exponent):
+    if exponent == 0:
+        return 1  
+    else:
+        return base * power(base, exponent - 1)
+base = 3
+exponent = 4
+result = power(base, exponent)
+print(f"{base} raised to the power {exponent} is: {result}")
+
+
+
+
+
+
 
 
 
